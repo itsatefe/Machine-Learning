@@ -1,52 +1,50 @@
-workclass_mapping = {
-    'Private': 'private',
-    'State-gov': 'government',
-    'Federal-gov': 'government',
-    'Self-emp-not-inc': 'self-employed',
-    'Self-emp-inc': 'self-employed',
-    'Local-gov': 'government',
-    'Without-pay': '?', 
-    'Never-worked': '?'
-}
-
-education_mapping = {
-    'HS-grad': 'high school grad',
-    '7th-8th': 'high school grad',
-    '10th': 'high school grad',
-    '11th': 'high school grad',
-    '12th': 'high school grad',
-    '9th': 'high school grad',
-    'Bachelors': 'college grad',
-    'Masters': 'college grad',
-    'Doctorate': 'college grad',
-    'Prof-school': 'college grad',
-    'Assoc-acdm': 'college grad',
-    'Assoc-voc': 'college grad',
-    'Some-college': '?',
-    '1st-4th': '?',
-    '5th-6th': '?',
-    'Preschool': '?'
-}
-
-marital_status_mapping = {
-    'Widowed':'single', 
-    'Divorced':'single', 
-    'Separated':'single', 
-    'Never-married':'single',
-    'Married-civ-spouse':'married', 
-    'Married-spouse-absent':'single', 
-    'Married-AF-spouse':'?'
-}
-
-race_mapping = {
-    'White':'white', 
-    'Black':'black', 
-    'Amer-Indian-Eskimo':'other',
-    'Asian-Pac-Islander':'other', 
-    'Other':'other'
-}
-
-income_mapping = {
-    '<=50K':'-', 
-    '>50K':'+'
+{
+    "workclass": {
+        "Private": "private",
+        "State-gov": "government",
+        "Federal-gov": "government",
+        "Self-emp-not-inc": "self-employed",
+        "Self-emp-inc": "self-employed",
+        "Local-gov": "government",
+        "Without-pay": "?",
+        "Never-worked": "?"
+    },
+    "education": {
+        "HS-grad": "high school grad",
+        "7th-8th": "high school grad",
+        "10th": "high school grad",
+        "11th": "high school grad",
+        "12th": "high school grad",
+        "9th": "high school grad",
+        "Bachelors": "college grad",
+        "Masters": "college grad",
+        "Doctorate": "college grad",
+        "Prof-school": "college grad",
+        "Assoc-acdm": "college grad",
+        "Assoc-voc": "college grad",
+        "Some-college": "?",
+        "1st-4th": "?",
+        "5th-6th": "?",
+        "Preschool": "?"
+    },
+    "marital.status": {
+        "Widowed": "single",
+        "Divorced": "single",
+        "Separated": "single",
+        "Never-married": "single",
+        "Married-civ-spouse": "married",
+        "Married-spouse-absent": "single",
+        "Married-AF-spouse": "?"
+    },
+    "race": {
+        "White": "white",
+        "Black": "black",
+        "Amer-Indian-Eskimo": "other",
+        "Asian-Pac-Islander": "other",
+        "Other": "other"
+    },
+    "income": {
+        "<=50K": "-",
+        ">50K": "+"
+    }
 }
