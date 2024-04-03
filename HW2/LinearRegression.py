@@ -18,3 +18,6 @@ class LinearRegression:
 
     def predict(self, data):
         return data @ self.params
+    
+    def set_params(self, params):
+        self.params = params
