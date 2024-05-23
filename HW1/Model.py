@@ -23,7 +23,6 @@ class CandidElimination:
     def __init__(self,fs):
         self.fs = fs
         
-        
     def get_all_h(self, uni):
         lens = list(map(len, uni))
         h = [np.concatenate([[uni[i][j]] * int(np.prod(lens[i + 1:])) for j in range(len(uni[i]))]).tolist() * int(np.prod(lens[:i])) for i in range(len(uni))]

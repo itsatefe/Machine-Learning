@@ -26,13 +26,13 @@ class Environment:
         
     def finish(self):
         if np.any(np.sum(self.__board=='x',axis=0)==3) or np.any(np.sum(self.__board=='x',axis=1)==3) or np.sum(self.__board.diagonal()=='x',axis=0)==3 or np.sum(self.__board[::-1].diagonal()=='x',axis=0)==3:
-            return 2
+            return 2 #x win
 
         elif np.any(np.sum(self.__board=='o',axis=0)==3) or np.any(np.sum(self.__board=='o',axis=1)==3) or np.sum(self.__board.diagonal()=='o',axis=0)==3 or np.sum(self.__board[::-1].diagonal()=='o',axis=0)==3:
-            return 3
+            return 3 #o win
 
         elif np.sum(self.__board == 'e') == 0:
-            return 1
+            return 1 #draw
 
         else:
-            return 0
+            return 0 #continue
