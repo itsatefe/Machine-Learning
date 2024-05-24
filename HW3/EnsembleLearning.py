@@ -80,6 +80,7 @@ class Bagging:
 
     def get_params(self, deep = True):
         dic = {'base_model':self.base_model, 'n_models':self.n_models}
+        
         dic.update(self.kwargs)
         return dic
 
@@ -88,6 +89,12 @@ class Bagging:
             setattr(self, parameter, value)
         return self
 
+    def max_depth(self,d):
+        if not isinstance(d, dict) or not d:
+            return 0
+        else:
+            return 1 + max(self.max_depth(v) for v in d.values())
+            
     def fit(self, data, labels):
         self.models = [self.base_model(**self.kwargs) for i in range(self.n_models)]
 
@@ -96,6 +103,7 @@ class Bagging:
             new_data = data[new_ind]
             new_labels = labels[new_ind]
             model.fit(new_data, new_labels)
+            # print(self.max_depth(model.tree))
 
     def predict(self, data):
         probs = np.concatenate([model.predict(data)[:, None] for model in self.models], axis = 1)

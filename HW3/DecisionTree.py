@@ -7,13 +7,15 @@ from sklearn.tree import DecisionTreeClassifier
 from scipy.stats import mode
 
 class DecisionTree:
-    def __init__(self, min_samples = 11, method = 'c4.5', max_depth = -1):
+    def __init__(self,feature_names = None, min_samples = 11, method = 'c4.5', max_depth = -1):
         self.min_sample = min_samples
         self.method = method
         self.max_depth = max_depth
         self.__rec_fit = self.rec_fit_c4 if method == 'c4.5' else self.rec_fit_cart
         self.__rec_predict = self.rec_predict_c4 if method == 'c4.5' else self.rec_predict_cart
         self.__rec_rules = self.rec_rules_c4 if method == 'c4.5' else self.rec_rules_cart
+        self.tree = None 
+        self.feature_names = feature_names
 
     def _entropy(self, labels):
         _, c = np.unique(labels, return_counts = True)
@@ -150,3 +152,68 @@ class DecisionTree:
         new_rules = [' '.join(x.split(' ')[2:]) for x in self.rules]
         self.rules = new_rules
         return new_rules
+
+    def build_tree_structure(self, rules_dict):
+        tree = {}
+        for path, rules in rules_dict.items():
+            current_level = tree
+            parts = path.strip().split('\n')
+            for part in parts:
+                if part not in current_level:
+                    current_level[part] = {}
+                current_level = current_level[part]
+            # Add rules to the final part of the path
+            current_level['rules'] = rules
+        return tree
+
+    def render_tree(self, tree, depth=0):
+        lines = []
+        for part, subtree in sorted(tree.items()):
+            if part == 'rules':
+                for rule in sorted(subtree):
+                    lines.append(f"{'|   ' * depth}{rule}")
+            else:
+                lines.append(f"{'|   ' * depth}{part}")
+                lines.extend(self.render_tree(subtree, depth + 1))
+        return lines
+
+    def extract_rules(self):
+        # Collect all rules starting from the root
+        all_rules = self.rec_rules(self.tree)
+        # Build a tree structure from the paths and rules
+        tree = self.build_tree_structure(all_rules)
+        # Render the tree into a formatted list of lines
+        return '\n'.join(self.render_tree(tree))
+
+    def rec_rules(self, node, depth=0, path='', current_rules=None):
+        if current_rules is None:
+            current_rules = {}
+
+        if isinstance(node, tuple):  # Leaf node check
+            rule = f"{'|   ' * depth}|--- class: {int(node[0])} ({node[1]:.2f})"
+            if path in current_rules:
+                current_rules[path].add(rule)
+            else:
+                current_rules[path] = {rule}
+        else:
+            for feature, subtrees in node.items():
+                for condition, subtree in subtrees.items():
+                    cond_type, split_value = condition
+                    condition_str = ""
+                    if self.method == "cart":
+                        if type(cond_type) == int:
+                            condition_str = "IS" if cond_type == 1 else "IS NOT"
+                        elif type(cond_type) == str:
+                            condition_str = cond_type
+                    elif self.method == "c4.5":
+                        if not cond_type:
+                            condition_str = "IS"
+                        else:
+                            condition_str = str(cond_type)
+
+                    new_path_part = f"{'|   ' * depth}|--- {self.feature_names[feature]} {condition_str} {split_value:.2f}"
+                    new_path = path + ('\n' if path else '') + new_path_part
+
+                    self.rec_rules(subtree, depth + 1, new_path, current_rules)
+
+        return current_rules
