@@ -1,6 +1,5 @@
-# Machine Learning Course (Spring 2024)
 
-This repository contains various projects focused on key concepts in machine learning, as well as a final project on Multi-View Graph Convolutional Networks with Attention Mechanism (MAGCN).
+This repository contains various projects focused on key concepts in machine learning, as well as an implementation of Multi-View Graph Convolutional Networks with Attention Mechanism (MAGCN).
 
 ## Contents
 
