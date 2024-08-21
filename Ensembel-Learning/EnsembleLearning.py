@@ -71,7 +71,7 @@ class SMOTE:
         new_labels = np.concatenate([self.labels, np.ones((len(samples_plus),))])
         return new_samples, new_labels
 
-
+# NAS
 class Bagging:
     def __init__(self, base_model, n_models = 5, **kwargs):
         self.base_model = base_model
