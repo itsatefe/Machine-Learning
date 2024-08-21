@@ -3,31 +3,25 @@ This repository contains various projects focused on key concepts in machine lea
 
 ## Contents
 
-### 1. Projects
-- **Concept Learning**
+- **[Concept Learning](https://github.com/itsatefe/Machine-Learning/tree/master/Concept-Learning)**
   - Topics: Rote Learner, Find-S, Candidate Elimination
   - Dataset: `adults.csv`
-  - [Instructions](https://github.com/itsatefe/Machine-Learning/tree/master/Concept-Learning)
 
-- **Function Approximation**
+- **[Function Approximation](https://github.com/itsatefe/Machine-Learning/tree/master/Function-Approximation)**
   - Topics: Implementing a Tic-Tac-Toe AI using Function Approximation
-  - [Instructions](https://github.com/itsatefe/Machine-Learning/tree/master/Function-Approximation)
 
-- **Decision Trees**
+- **[Decision Trees](https://github.com/itsatefe/Machine-Learning/tree/master/Decision-Tree)**
   - Topics: Decision Trees
   - Datasets: Heart Failure
-  - [Instructions](https://github.com/itsatefe/Machine-Learning/tree/master/Decision-Tree)
 
-- **Ensemble Learning**
-  - Topics: Decision Trees, Bagging, Boosting
+- **[Ensemble Learning](https://github.com/itsatefe/Machine-Learning/tree/master/Ensemble-Learning)**
+  - Topics: Bagging, Boosting
   - Datasets: Abalone
-  - [Instructions](https://github.com/itsatefe/Machine-Learning/tree/master/Ensemble-Learning)
 
-- **Feature Maps, Kernels, and Regularization in Linear Regression**
+- **[Feature Maps, Kernels, and Regularization in Linear Regression](https://github.com/itsatefe/Machine-Learning/tree/master/Feature_Maps-Kernels_Regularization)**
   - Topics: Feature Maps, Kernels, Regularization Techniques
-  - [Instructions](https://github.com/itsatefe/Machine-Learning/tree/master/Feature_Maps-Kernels_Regularization)
 
-### 2. MAGCN
-- **Title**: Multi-View Graph Convolutional Networks with Attention Mechanism
-- **Description**: Implementation of MAGCN to handle graph-structured data across multiple views, enhancing the model's ability to perform tasks like node classification.
-- [Project Report](https://github.com/itsatefe/Machine-Learning/tree/master/Multi-View-GCN)
+- **[MAGCN](https://github.com/itsatefe/Machine-Learning/tree/master/Multi-View-GCN)**
+  - **Paper Title**: Multi-View Graph Convolutional Networks with Attention Mechanism
+  - **Description**: Implementation of MAGCN to handle graph-structured data across multiple views, enhancing the model's ability to perform tasks like node classification.
+
