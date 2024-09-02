@@ -1,6 +1,5 @@
 import numpy as np
 from scipy.stats import mode
-import gdown
 
 class NearestNeighbors:
     def fit(self, data):

@@ -5,7 +5,6 @@ from scipy.stats import mode
 from copy import deepcopy
 from sklearn.model_selection import train_test_split, cross_validate
 from sklearn.metrics import roc_auc_score, roc_curve, RocCurveDisplay, precision_score, recall_score, auc as AUC
-import gdown
 from sklearn.tree import DecisionTreeClassifier
 
 class OnevsAll:
